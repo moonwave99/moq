@@ -5,8 +5,12 @@
 
 -   url:        '/users'
     method:     GET
+    delay:      1
     responses:
-        200:    [{ id: 1, firstName: 'foo', lastName: 'bar', username : 'foobar'}]
+        200:    [
+                    { id: 1, firstName: 'foo', lastName: 'bar', username : 'foobar'},
+                    { id: 2, firstName: 'henry', lastName: 'chinaski', username : 'chinaski'}
+                ]
         403:    Access denied baby.
 
 -   url:        '/users'
@@ -38,7 +42,10 @@
 -   url:        '/users/:id/pictures'
     method:     GET
     responses:
-        200:    [{ id: 1, url: 'http://some.path.to/pic1.jpg'}, {id: 2, url: 'http://some.path.to/pic2.jpg'}]
+        200:    [
+                    { id: 1, url: 'http://some.path.to/pic1.jpg'},
+                    { id: 2, url: 'http://some.path.to/pic2.jpg'}
+                ]
 
 -   url:        '/users/:id/pictures/:picture_id'
     method:     GET

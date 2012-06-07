@@ -44,8 +44,12 @@ Then look at ```routes.yml```, you'll see a list of demo URIs you may edit on pu
 
 	-   url:        '/users'
 	    method:     GET
+	    delay:      1
 	    responses:
-	        200:    [{ id: 1, firstName: 'foo', lastName: 'bar', username : 'foobar'}]
+	        200:    [
+	                    { id: 1, firstName: 'foo', lastName: 'bar', username : 'foobar'},
+	                    { id: 2, firstName: 'henry', lastName: 'chinaski', username : 'chinaski'}
+	                ]
 	        403:    Access denied baby.
 
 	-   url:        '/users'
@@ -64,12 +68,13 @@ Then look at ```routes.yml```, you'll see a list of demo URIs you may edit on pu
 	    responses:
 	        200:    { id: :id, firstName: 'bar', lastName: 'foo', username : 'foobar'}
 
-		...
+			...
 
 each one composed of:
 
 * a **pattern**, which may contain *colon-placeholders* [ex. ```:id```];
 * a HTTP **method** [```GET```/```POST```/```PUT```/```DELETE```];
+* an optional **delay** the response should be shifted of, in seconds [0 if not given of course];
 * a list of HTTP **responses** based on HTTP **statuses**.
 
 So if you ask the server for:

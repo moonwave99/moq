@@ -30,6 +30,12 @@ class Route
 
 	/**
 	*	@access protected
+	*	@var int
+	*/
+	protected $delay;
+
+	/**
+	*	@access protected
 	*	@var array
 	*/
 	protected $responses;
@@ -65,13 +71,15 @@ class Route
 	*	@param string $url The route url
 	*	@param string $method The route method [GET, POST, PUT, DELETE]
 	*	@param array $respones Key-Value array of HTTP respones [status => body]
+	*	@param int $delay How many seconds the response should be delayed
 	*/
-	public function __construct($url, $method, $responses)
+	public function __construct($url, $method, $responses, $delay = 0)
 	{
 
 		$this -> url = $url;
 		$this -> method = $method;
 		$this -> responses = $responses;
+		$this -> delay = $delay;
 
 	}
 
@@ -138,6 +146,8 @@ class Route
 	public function renderResponse($status)
 	{
 
+		sleep(min($this -> delay, 10));
+
 		$keys = array_keys($this -> responses);
 
 		header(sprintf('HTTP/1.0 %s %s', $status ?: $keys[0], self::$statuses[$status ?: $keys[0]]));
@@ -200,7 +210,7 @@ class Moq
 		foreach(spyc_load($contents) as $route)
 		{
 
-			$this -> routes[] = new Route($route['url'], $route['method'], $route['responses']);
+			$this -> routes[] = new Route($route['url'], $route['method'], $route['responses'], $route['delay']?:0);
 
 		}
 
