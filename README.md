@@ -98,6 +98,8 @@ and you'll get associated response:
 
 	403 Forbidden "Access denied baby."
 
+If no status parameter is given, first response from list is chosen of course.
+
 ##Copyright and license
 
 Copyright (c) 2012 MWLabs
