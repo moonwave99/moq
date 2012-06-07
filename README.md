@@ -13,6 +13,8 @@ See it in action [here](http://moonwave99.webfactional.com/moq/), or performing 
 	GET		http://moonwave99.webfactional.com/moq/users
 	POST	http://moonwave99.webfactional.com/moq/users/17
 
+All responses are not-cached and **JSON** formatted.
+
 ##Installation and Configuration
 
 Just clone this repository into desired webserver path:
