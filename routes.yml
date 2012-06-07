@@ -1,0 +1,46 @@
+-   url:        '/'
+    method:     GET
+    responses:
+        200:    moq server working.
+
+-   url:        '/users'
+    method:     GET
+    responses:
+        200:    [{ id: 1, firstName: 'foo', lastName: 'bar', username : 'foobar'}]
+        403:    Access denied baby.
+
+-   url:        '/users'
+    method:     POST
+    responses:
+        201:    null
+        400:    This is a bad request baby.
+
+-   url:        '/users/:id'
+    method:     GET
+    responses:
+        200:    { id: :id, firstName: 'foo', lastName: 'bar', username : 'foobar'}
+
+-   url:        '/users/:id'
+    method:     PUT
+    responses:
+        200:    { id: :id, firstName: 'bar', lastName: 'foo', username : 'foobar'}
+
+-   url:        '/users/:id'
+    method:     DELETE
+    responses:
+        200:    null
+
+-   url:        '/users/:id'
+    method:     POST
+    responses:
+        405:    null
+
+-   url:        '/users/:id/pictures'
+    method:     GET
+    responses:
+        200:    [{ id: 1, url: 'http://some.path.to/pic1.jpg'}, {id: 2, url: 'http://some.path.to/pic2.jpg'}]
+
+-   url:        '/users/:id/pictures/:picture_id'
+    method:     GET
+    responses:
+        200:    { id: :picture_id, url: 'http://some.path.to/pic:picture_id.jpg'}
