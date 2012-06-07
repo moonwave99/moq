@@ -26,7 +26,7 @@ or unzip in same location if you prefer. Then look at ```index.php```:
 		'routes.yml'				// replace this with desired routes file
 	);
 
-and just change those two params as desired.
+and just change those two params as desired. For example, if you installed moq in ```.../htdocs/some/path/to/moq/``` [with **.../htdocs/** being the phisical webserver root on the machine], the base URL will be ```http://localhost/some/path/to/moq/```.
 
 ##Usage
 
