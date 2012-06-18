@@ -194,13 +194,12 @@ class Moq
 	/**
 	*	Default constructor.
 	*	@access public
-	*	@param string $baseUrl The base url where Moq server lives
 	*	@param string $routesFile 'routes.yml' resource path
 	*/
-	public function __construct($baseUrl, $routesFile)
+	public function __construct($routesFile)
 	{
 
-		$this -> baseUrl = $baseUrl;
+		$this -> baseUrl = 'http://' . $_SERVER['SERVER_NAME']. str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
 		$this -> routes = array();
 		$this -> method = $_SERVER['REQUEST_METHOD'];
 		$this -> status = (int)$_REQUEST['_status'] >= 100 ? $_REQUEST['_status'] : NULL;

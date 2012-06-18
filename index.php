@@ -11,7 +11,6 @@
 require __DIR__ ."/src/moq.php";
 
 $moq = new Moq(
-	'http://localhost/moq/',	// replace this with desired path
 	'routes.yml'				// replace this with desired routes file
 );
 

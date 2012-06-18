@@ -24,11 +24,10 @@ Just clone this repository into desired webserver path:
 or unzip in same location if you prefer. Then look at ```index.php```:
 
 	$moq = new Moq(
-		'http://localhost/moq/',	// replace this with desired path
 		'routes.yml'				// replace this with desired routes file
 	);
 
-and just change those two params as desired. For example, if you installed moq in ```.../htdocs/some/path/to/moq/``` [with **.../htdocs/** being the phisical webserver root on the machine], the base URL will be ```http://localhost/some/path/to/moq/```.
+and change the .yml file path if you want.
 
 ##Usage
 
