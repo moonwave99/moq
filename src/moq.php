@@ -216,7 +216,7 @@ class Route
 		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 		header('Content-type: application/json');
 
-		echo json_encode($this -> responses[$status ?: $keys[0]]);
+		echo json_encode($this -> responses[$status ?: $keys[0]], JSON_NUMERIC_CHECK);
 
 	}
 
