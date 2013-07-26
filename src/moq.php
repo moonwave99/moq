@@ -103,7 +103,7 @@ class Route
 		if(count($urlTokens = explode('/', $this -> url)) != count(explode('/', $pattern)))
 			return false;
 
-		$regexp = array();
+		$regexp = [];
 
 		foreach($urlTokens as $token)
 		{
@@ -200,16 +200,16 @@ class Moq
 	{
 
 		$this -> baseUrl = 'http://' . $_SERVER['SERVER_NAME']. str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
-		$this -> routes = array();
+		$this -> routes = [];
 		$this -> method = $_SERVER['REQUEST_METHOD'];
-		$this -> status = (int)$_REQUEST['_status'] >= 100 ? $_REQUEST['_status'] : NULL;
+		$this -> status = isset($_REQUEST['_status']) && (int)$_REQUEST['_status'] >= 100 ? $_REQUEST['_status'] : NULL;
 
 		!($contents = file_get_contents($routesFile)) && $this -> serverError("'" . $routesFile ."' not found.");
 
 		foreach(spyc_load($contents) as $route)
 		{
 
-			$this -> routes[] = new Route($route['url'], $route['method'], $route['responses'], $route['delay']?:0);
+			$this -> routes[] = new Route($route['url'], $route['method'], $route['responses'], isset($route['delay'])?$route['delay']:0);
 
 		}
 
@@ -294,7 +294,7 @@ class Moq
 			$_SERVER['REQUEST_URI']
 		);
 
-		return array_shift(explode('?', $pattern));
+    return explode('?', $pattern)[0];
 
 	}
 

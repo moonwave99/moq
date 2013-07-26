@@ -43,11 +43,11 @@
     method:     GET
     responses:
         200:    [
-                    { id: 1, url: 'http://some.path.to/pic1.jpg'},
-                    { id: 2, url: 'http://some.path.to/pic2.jpg'}
+                    { id: 1, url: 'http://placekitten.com/200/300'},
+                    { id: 2, url: 'http://placekitten.com/g/200/300'}
                 ]
 
 -   url:        '/users/:id/pictures/:picture_id'
     method:     GET
     responses:
-        200:    { id: :picture_id, url: 'http://some.path.to/pic:picture_id.jpg'}
+        200:    { id: :picture_id, url: 'http://placekitten.com/200/300'}
