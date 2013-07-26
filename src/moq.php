@@ -318,12 +318,12 @@ class Moq
 	protected function serverError($body = 'Server elves are sleeping.')
 	{
 
-		header('HTTP/1.0 404 Not Found');
+		header('HTTP/1.0 500 Internal Server Error');
 		header('Cache-Control: no-cache, must-revalidate');
 		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 		header('Content-type: application/json');
 
-		echo $body;
+		echo json_encode($body, JSON_NUMERIC_CHECK);
 
 		exit;
 
@@ -342,7 +342,7 @@ class Moq
 		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 		header('Content-type: application/json');
 
-		echo $body;
+		echo json_encode($body, JSON_NUMERIC_CHECK);
 
 		exit;
 
