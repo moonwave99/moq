@@ -190,6 +190,12 @@ class Moq
 	*	@var int
 	*/
 	protected $status;
+  
+	/**
+	*	@access protected
+	*	@var boolean
+	*/
+	protected $isProxy;  
 
 	/**
 	*	Default constructor.
@@ -199,7 +205,8 @@ class Moq
 	public function __construct($routesFile)
 	{
 
-		$this -> baseUrl = 'http://' . $_SERVER['SERVER_NAME']. str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
+    $this -> isProxy = isset($_SERVER['HTTP_X_FORWARDED_FOR']);
+		$this -> baseUrl = 'http://' . $_SERVER['SERVER_NAME'] . ( $this -> isProxy ? (':' . $_SERVER['SERVER_PORT']) : '' ) . str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
 		$this -> routes = [];
 		$this -> method = $_SERVER['REQUEST_METHOD'];
 		$this -> status = isset($_REQUEST['_status']) && (int)$_REQUEST['_status'] >= 100 ? $_REQUEST['_status'] : NULL;
@@ -226,7 +233,7 @@ class Moq
 
 		foreach($this -> routes as $route)
 		{
-
+      
 			if($route -> match(
 				$pattern,
 				$this -> method,
